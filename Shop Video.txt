@@ -1,0 +1,62 @@
+create database ShopVideo
+go
+use ShopVideo
+
+go
+
+create table Category(
+CategoryId int NOT NULL IDENTITY(1,1),
+Categoryname nvarchar(100),
+Categorycode nvarchar(100),
+Images nvarchar(500),
+Status bit,
+PRIMARY KEY(CategoryId)
+)
+go
+
+create table Users(
+Username nvarchar(50) NOT NULL PRIMARY KEY,
+Password nvarchar(50),
+Phone nvarchar(15),
+Fullname nvarchar(50),
+Email nvarchar(150),
+Admin bit,
+Active bit,
+Images nvarchar(500)
+)
+
+go
+
+create table Videos(
+VideoId nvarchar(50) NOT NULL PRIMARY KEY,
+Title nvarchar(200),
+Poster nvarchar(50),
+Views int,
+Description nvarchar(500),
+Active bit,
+CategoryId int,
+FOREIGN KEY (CategoryId) REFERENCES Category (CategoryId)
+)
+
+go
+
+create table Shares(
+ShareId int NOT NULL PRIMARY KEY IDENTITY(1,1),
+Emails nvarchar(50),
+SharedDate date,
+Username nvarchar(50),
+VideoId nvarchar(50),
+FOREIGN KEY (Username) REFERENCES Users (Username),
+FOREIGN KEY (VideoId) REFERENCES Videos (VideoId)
+)
+
+go
+
+create table Favorites (
+FavoriteId int NOT NULL PRIMARY KEY IDENTITY(1,1),
+LikedDate date,
+VideoId nvarchar(50),
+Username nvarchar(50),
+FOREIGN KEY (Username) REFERENCES Users (Username),
+FOREIGN KEY (VideoId) REFERENCES Videos (VideoId)
+)

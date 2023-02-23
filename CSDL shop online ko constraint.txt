@@ -1,0 +1,101 @@
+
+CREATE DATABASE ShopOnlineNew
+
+ 
+GO
+USE ShopOnlineNew
+GO
+
+CREATE TABLE [dbo].[Cart](
+	[cartId] [nvarchar](50) NULL,
+	[userId] [int] NULL,
+	[buyDate] [datetime] NULL,
+	[status] [int] NULL,
+)
+
+GO
+
+CREATE TABLE [dbo].[CartItem](
+	[cartItemId] [nvarchar](50) NULL,
+	[quantity] [int] NULL,
+	[unitPrice] [float] NULL,
+	[productId] [int] NULL,
+	[cartId] [nvarchar](50) NULL,
+)
+GO
+
+CREATE TABLE [dbo].[Category](
+	[categoryId] [int]  NULL,
+	[categoryName] [nvarchar](200) NULL,
+	[images] [nvarchar](500) NULL,
+	[status] [int] NULL,
+) 
+
+
+
+GO
+CREATE TABLE [dbo].[Product](
+	[productId] [int] NULL,
+	[productName] [nvarchar](200) NULL,
+	[productCode] [bigint] NULL,
+	[categoryId] [int] NULL,
+	[description] [nvarchar](500) NULL,
+	[price] [float] NULL,
+	[amount] [int] NULL,
+	[stock] [int] NULL,
+	[images] [nvarchar](500) NULL,
+	[wishlist] [int] NULL,
+	[status] [int] NULL,
+	[createDate] [date] NULL,
+	[sellerId] [int] NULL,
+
+)
+GO
+
+CREATE TABLE [dbo].[Seller](
+	[sellerId] [int] NULL,
+	[sellername] [nvarchar](50) NULL,
+	[images] [nvarchar](500) NULL,
+	[status] [int] NULL,
+)
+
+GO
+
+
+CREATE TABLE [dbo].[Slides](
+	[slideid] [int] NULL,
+	[slidename] [nvarchar](200) NULL,
+	[slidelink] [nvarchar](500) NULL,
+	[slidedescription] [nvarchar](500) NULL,
+	[slideimages] [nvarchar](500) NULL,
+	[status] [int] NULL,
+	[slidetype] [int] NULL,
+ 
+)
+
+
+GO
+
+
+CREATE TABLE [dbo].[UserRoles](
+	[roleId] [int] NULL,
+	[roleName] [nvarchar](50) NULL,
+
+)
+GO
+
+
+CREATE TABLE [dbo].[Users](
+	[userId] [int] NULL,
+	[username] [nvarchar](50) NULL,
+	[email] [nvarchar](100) NULL,
+	[fullname] [nvarchar](50) NULL,
+	[password] [nvarchar](50) NULL,
+	[images] [nvarchar](500) NULL,
+	[phone] [nvarchar](20) NULL,
+	[status] [int] NULL,
+	[code] [nvarchar](50) NULL,
+	[roleId] [int] NULL,
+	[sellerid] [int] NULL,
+
+)
